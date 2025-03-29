@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    font-size: 1.3em;
+    text-align:center;
+    font-weight: bold;
+}
+
+.table-general {
+    margin-top: 20px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+.table-general thead{
+    text-align: center;
+    background-color: #53b958;
+    color: white;
+}
+
+.table-general, th, td{
+    padding: 10px 20px;
+    border: 1px solid #ddd; 
+}
+
+.table-general tr:nth-child(even){
+    background-color: #ececec;
+}
+.table-general tr:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+    transition: background-color 0.2s ease-in-out;
+}
+.table-general td {
+    color: #333;
+}
+.table-general th{
+    font-weight: bold;
+}
+
+.btn-form {
+    margin-top: 3em;
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-form:hover {
+    background-color: #45a049; /* Cor ao passar o mouse */
+}

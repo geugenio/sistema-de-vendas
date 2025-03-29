@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="stylesheet" th:href="@{/css/default-list.css}" />
+    <title>Supplier</title>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <ul>
+                <li><a th:href="@{/product/list}">Produtos</a></li>
+                <li><a th:href="@{/}">Página inicial</a></li>
+                <li><a th:href="@{#}">Fornecedores</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div th:switch="${suppliers}" class="container">
+            <h2 th:case="null" class="title"> Nenhum fornecedor registrado ainda!</h2>
+            <div th:case="*">
+                <table class="table-general">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CNPJ</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="supplier : ${suppliers}">
+                            <td th:text="${supplier.name}"></td>
+                            <td th:text="${supplier.cnpj}"></td>
+                            <td th:text="${supplier.phone}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a th:href="@{/supplier/form}" class="btn-form"> Adicionar novo fornecedor</a>
+        </div>
+    </main>
+</body>
+</html>

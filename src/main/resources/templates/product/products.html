@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="stylesheet" th:href="@{/css/default-list.css}" />
+    <title>Produtos</title>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <ul>
+                <li><a th:href="@{#}">Produtos</a></li>
+                <li><a th:href="@{/}">Página inicial</a></li>
+                <li><a th:href="@{/supplier/list}">Fornecedores</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <div th:switch="${product}" class="container">
+        <h2: th:case="null" class="title"> Nenhum produto registrado ainda!</h2>
+        <div th:case="*">
+            <table class="table-general">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Marca</th>
+                        <th>Categoria</th>
+                        <th>Fornecedor</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product : ${product}">
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${product.brand}"></td>
+                        <td th:text="${product.category}"></td>
+                        <td th:text="${product.supplier.getName()}"></td>
+                        <td th:text="${product.description}"></td>
+                        <td th:text="${product.price}"></td>
+                        <td th:text="${product.amount}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </main>
+
+    <footer>
+        <p>Página feita para estudo. Por Gabriel Eugênio Vitalino da Silva, graduando em BTI pela UFRN.</p>
+    </footer>
+</body>
+</html>
