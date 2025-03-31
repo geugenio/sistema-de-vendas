@@ -18,36 +18,36 @@
         </nav>
     </header>
     <main>
-    <div th:switch="${product}" class="container">
-        <h2: th:case="null" class="title"> Nenhum produto registrado ainda!</h2>
-        <div th:case="*">
-            <table class="table-general">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Marca</th>
-                        <th>Categoria</th>
-                        <th>Fornecedor</th>
-                        <th>Descrição</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="product : ${product}">
-                        <td th:text="${product.name}"></td>
-                        <td th:text="${product.brand}"></td>
-                        <td th:text="${product.category}"></td>
-                        <td th:text="${product.supplier.getName()}"></td>
-                        <td th:text="${product.description}"></td>
-                        <td th:text="${product.price}"></td>
-                        <td th:text="${product.amount}"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <a th:href="@{/product/form}" class="btn-form"> Adicionar novo produto</a>
+    <div th:switch="${products}" class="container">
+    <h2 th:case="null" class="title">Nenhum produto registrado ainda!</h2>
+    <div th:case="*">
+        <table class="table-general">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                    <th>Categoria</th>
+                    <th>Fornecedor</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.brand}"></td>
+                    <td th:text="${product.category}"></td>
+                    <td th:text="${product.supplier.name}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.amount}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <a th:href="@{/product/form}" class="btn-form">Adicionar novo produto</a>
+</div>
     </main>
 
     <footer>
