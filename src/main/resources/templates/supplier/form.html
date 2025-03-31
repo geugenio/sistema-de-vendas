@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="stylesheet" th:href="@{/css/default-form.css}" />
     <title>Novo Fornecedor</title>
 </head>
 <body>
@@ -17,25 +18,32 @@
         </nav>
     </header>
     <main>
-        <form th:action="@{/supplier/add}" th:object="${supplier}" method="post">
+        <div class="container-form">
+            <h2>
+                ADICIONAR NOVO FORNECEDOR
+            </h2>
+            <form th:action="@{/supplier/add}" th:object="${supplier}" method="post">
+                <div class="container-input-label">
+                    <div class="input-label">
+                        <label for="name">Nome</label>
+                        <input type="text" th:field="*{name}" id="name" placeholder="Nome do fornecedor">
+                    </div>
+        
+                    <div class="input-label">
+                        <label for="cnpj">CPNJ</label>
+                        <input type="text" th:field="*{cnpj}" id="cnpj" placeholder="CNPJ">
+                    </div>
+        
+                    <div class="input-label">
+                        <label for="phone">Telefone</label>
+                        <input type="tel"  th:field="*{phone}" id="phone" placeholder="Telefone...">
+                    </div>
+                </div>
+    
+                <input type="submit" value="Submit" class="btn-submit">
+            </form>
+        </div>
 
-            <div class="input-label">
-                <label for="name">Nome</label>
-                <input type="text" th:field="*{name}" id="name" placeholder="Nome do fornecedor">
-            </div>
-
-            <div class="input-label">
-                <label for="cnpj">CPNJ</label>
-                <input type="text" th:field="*{cnpj}" id="cnpj" placeholder="CNPJ">
-            </div>
-
-            <div class="input-label">
-                <label for="phone">Telefone</label>
-                <input type="tel"  th:field="*{phone}" id="phone" placeholder="Telefone...">
-            </div>
-
-            <input type="submit" value="Submit" class="btn-submit">
-        </form>
     </main>
 </body>
 </html>

@@ -18,41 +18,49 @@
         </nav>
     </header>
     <main>
-        <form th:action="@{/product/add}" th:object="${product}" method="post">
-            <div class="input-label">
-                <label for="name">Nome</label>
-                <input type="text" th:field="*{name}" id="name" placeholder="Nome do produto">
-            </div>
+        <div class="container-form">
+            <h2>
+                Adicionar Novo Produto
+            </h2>
+            <form th:action="@{/product/add}" th:object="${product}" method="post">
+                <div class="container-input-label">
+                    <div class="input-label">
+                        <label for="name">Nome</label>
+                        <input type="text" th:field="*{name}" id="name" placeholder="Nome do produto">
+                    </div>
+        
+                    <div class="input-label">
+                        <label for="brand">Marca</label>
+                        <input type="text" th:field="*{brand}" id="brand" placeholder="Marca">
+                    </div>
+        
+                    <div class="input-label">
+                        <label for="category">Categoria</label>
+                        <input type="text"  th:field="*{category}" id="category" placeholder="Categoria...">
+                    </div>
+        
+                    <div class="input-label">
+                        <label for="description">Descrição</label>
+                        <input type="text" th:field="*{description}" id="description" placeholder="Descrição...">    
+                    </div>
+        
+                    <div class="input-label">
+                        <label for="price">Preço</label>
+                        <input type="number" th:field="*{price}" id="price" placeholder="Preço">
+                    </div>
+        
+                    <div class="input-label">
+                        <label for="supplier">Fornecedor</label>
+                        <input list="list-fornecedores" id="supplier_id" th:field="*{supplier_id}" placeholder="Fornecedor">
+                        <datalist id="list-fornecedores">
+                            <option th:each="supplier : ${suppliers}" th:value="${supplier.id}" th:text="${supplier.name}"></option>
+                        </datalist>
+                    </div>
 
-            <div class="input-label">
-                <label for="brand">Marca</label>
-                <input type="text" th:field="*{brand}" id="brand" placeholder="Marca">
-            </div>
-
-            <div class="input-label">
-                <label for="category">Categoria</label>
-                <input type="text"  th:field="*{category}" id="category" placeholder="Categoria...">
-            </div>
-
-            <div class="input-label">
-                <label for="description">Descrição</label>
-                <input type="text" th:field="*{description}" id="description" placeholder="Descrição...">    
-            </div>
-
-            <div class="input-label">
-                <label for="price">Preço</label>
-                <input type="number" th:field="*{price}" id="price" placeholder="Preço">
-            </div>
-
-            <div class="input-label">
-                <label for="supplier">Fornecedor</label>
-                <input list="list-fornecedores" id="supplier_id" th:field="*{supplier_id}" placeholder="Fornecedor">
-                <datalist id="list-fornecedores">
-                    <option th:each="supplier : ${suppliers}" th:value="${supplier.id}" th:text="${supplier.name}"></option>
-                </datalist>
-            </div>
-            <input type="submit" value="Submit" class="btn-submit">
-        </form>
+                </div>
+                <input type="submit" value="Submit" class="btn-submit">
+            </form>
+        </div>
     </main>
 </body>
 </html>
