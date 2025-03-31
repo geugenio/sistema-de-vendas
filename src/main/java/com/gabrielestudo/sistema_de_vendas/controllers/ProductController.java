@@ -1,8 +1,10 @@
 package com.gabrielestudo.sistema_de_vendas.controllers;
 
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gabrielestudo.sistema_de_vendas.dtos.ProductCreateDTO;
 import com.gabrielestudo.sistema_de_vendas.model.Product;
 import com.gabrielestudo.sistema_de_vendas.services.ProductService;
+import com.gabrielestudo.sistema_de_vendas.services.SupplierService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    ProductService productService;
+    private ProductService productService;
+
+    @Autowired
+    private SupplierService supplierService;
 
     @RequestMapping("/")
     public String listProducts(Model model) {
@@ -26,7 +34,10 @@ public class ProductController {
     }
 
     @GetMapping("/form")
-    public String showForm(ProductCreateDTO dto) {
+    public String showForm(Model model) {
+        ProductCreateDTO productCreateDTO = new ProductCreateDTO("", "", BigDecimal.valueOf(0), "", "", null);
+        model.addAttribute("suppliers", supplierService.findAll());
+        model.addAttribute("product", productCreateDTO);
         return "product/form";
     }
 
@@ -37,9 +48,12 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String addProduct(@ModelAttribute ProductCreateDTO data, Model model) {
+    public String addProduct(@Valid @ModelAttribute ProductCreateDTO data, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "product/form";
+        }
         productService.save(data);
-        return "redirect:/home";
+        return "redirect:/product/list";
     }
 
     @GetMapping("/delete/{id}")

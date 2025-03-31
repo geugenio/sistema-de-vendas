@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="stylesheet" th:href="@{/css/default-form.css}" />
     <title>Novo produto</title>
 </head>
 <body>
+    <header>
+        <nav class="nav-bar">
+            <ul>
+                <li><a th:href="@{/product/list}">Produtos</a></li>
+                <li><a th:href="@{/}">Página inicial</a></li>
+                <li><a th:href="@{/supplier/list}">Fornecedores</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-        <form th:action="@{/products/add}" th:object="${product}" method="post">
-
+        <form th:action="@{/product/add}" th:object="${product}" method="post">
             <div class="input-label">
                 <label for="name">Nome</label>
                 <input type="text" th:field="*{name}" id="name" placeholder="Nome do produto">
@@ -36,9 +46,9 @@
 
             <div class="input-label">
                 <label for="supplier">Fornecedor</label>
-                <input list="list-fornecedores" id="supplier" th:field="*{supplier}" placeholder="Fornecedor">
+                <input list="list-fornecedores" id="supplier_id" th:field="*{supplier_id}" placeholder="Fornecedor">
                 <datalist id="list-fornecedores">
-                    <option th:each="supplier : ${suppliers}" th:value="${supplier.name}"></option>
+                    <option th:each="supplier : ${suppliers}" th:value="${supplier.id}" th:text="${supplier.name}"></option>
                 </datalist>
             </div>
             <input type="submit" value="Submit" class="btn-submit">

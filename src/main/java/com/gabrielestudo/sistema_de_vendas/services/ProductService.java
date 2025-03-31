@@ -23,6 +23,7 @@ public class ProductService {
 
         Product prod = new Product();
         prod.setAmount(0);
+        prod.setBrand(data.brand());
         prod.setDescription(data.description());
         prod.setName(data.name());
         prod.setPrice(data.price());
