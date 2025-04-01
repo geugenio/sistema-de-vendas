@@ -26,4 +26,12 @@ public class SupplierService {
     public List<Supplier> findAll() {
         return supplierRepository.findAll();
     }
+
+    public boolean existsById(Long id) {
+        return supplierRepository.existsById(id);
+    }
+
+    public void deleteById(Long id) {
+        supplierRepository.deleteById(id);
+    }
 }
