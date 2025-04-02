@@ -12,6 +12,8 @@ import com.gabrielestudo.sistema_de_vendas.model.Supplier;
 import com.gabrielestudo.sistema_de_vendas.repositories.ProductRepository;
 import com.gabrielestudo.sistema_de_vendas.repositories.SupplierRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ProductService {
     @Autowired
@@ -30,7 +32,7 @@ public class ProductService {
         prod.setCategory(data.category());
 
         Supplier sup = supplierRepository.findById(data.supplier_id())
-                .orElseThrow(() -> new IllegalArgumentException("Erro! Fornecedor não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Erro! Produto não encontrado"));
         prod.setSupplier(sup);
 
         productRepository.save(prod);
@@ -56,4 +58,19 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public boolean existsById(Long id) {
+        return productRepository.existsById(id);
+    }
+
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
+    }
+
+    public void addQuantity(Long id, int quantity) {
+        Product prod = productRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Erro! Produto nãop encontrado"));
+        prod.setAmount(prod.getAmount() + quantity);
+
+        productRepository.save(prod);
+    }
 }
