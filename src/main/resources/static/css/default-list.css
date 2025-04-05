@@ -57,3 +57,59 @@
 .btn-form:hover {
     background-color: #45a049; /* Cor ao passar o mouse */
 }
+
+.fa-cart-plus:hover{
+    cursor:pointer;
+}
+.form-popup {
+    position: absolute;
+    transform: translateX(-160px);
+    padding: 12px;
+    min-width: 160px;
+    background-color: #fff;
+    border-radius: 6px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+.form-add-quantity{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-add-quantity label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-add-quantity input {
+    width: 80px;
+    padding: 4px 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.form-add-quantity button {
+    align-self: flex-start;
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-add-quantity button:hover {
+    background-color: rgb(36, 88, 25);
+}
+
+.ocultado {
+    display: none;
+}

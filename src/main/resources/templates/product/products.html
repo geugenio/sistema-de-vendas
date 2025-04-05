@@ -44,17 +44,17 @@
                     <td th:text="${product.description}"></td>
                     <td th:text="${product.price}"></td>
                     <td th:text="${product.amount}"></td>
-                    <td><i class="fa-solid fa-cart-plus"></i></td>
-                    <div class="ocultado">
-                        <form action="#" th:action="@{/product/addquantity/{id}(id=${product.id})}" method="post">
-                            <input type="hidden" name="_method" value="put">
-                        
-                            <label for="quantity">Quantidade:</label>
-                            <input type="number" id="quantity" name="quantity" required>
-                        
-                            <button type="submit">Atualizar Quantidade</button>
-                        </form>
-                    </div>
+                    <td>
+                        <i class="fa-solid fa-cart-plus" style="cursor: pointer;" onclick="toggleOcultado(this)"></i>
+                        <div class="form-popup ocultado">
+                            <form class="form-add-quantity" action="#" th:action="@{/product/addquantity/{id}(id=${product.id})}" method="post" onclick="event.stopPropagation()">
+                                <input type="hidden" name="_method" value="put">
+                                <label for="quantity">Quantidade:</label>
+                                <input type="number" name="quantity" required>
+                                <button type="submit">Atualizar</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
