@@ -32,7 +32,6 @@
                     <th>Descrição</th>
                     <th>Preço</th>
                     <th>Quantidade</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -41,11 +40,11 @@
                     <td th:text="${product.brand}"></td>
                     <td th:text="${product.category}"></td>
                     <td th:text="${product.supplier.name}"></td>
-                    <td th:text="${product.description}"></td>
+                    <td th:text="${product.description}" class="description-td"></td>
                     <td th:text="${product.price}"></td>
                     <td th:text="${product.amount}"></td>
-                    <td>
-                        <i class="fa-solid fa-cart-plus" style="cursor: pointer;" onclick="toggleOcultado(this)"></i>
+                    <td class="cart-icon-td">
+                        <i class="fa-solid fa-cart-plus" onclick="toggleOcultado(this)"></i>
                         <div class="form-popup ocultado">
                             <form class="form-add-quantity" action="#" th:action="@{/product/addquantity/{id}(id=${product.id})}" method="post" onclick="event.stopPropagation()">
                                 <input type="hidden" name="_method" value="put">
@@ -54,6 +53,14 @@
                                 <button type="submit">Atualizar</button>
                             </form>
                         </div>
+                    </td>
+                    <td>
+                        <form action="#" th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" class="delete-button">
+                                <i class="fa-solid fa-trash"></i>
+                            </button> 
+                        </form>
                     </td>
                 </tr>
             </tbody>

@@ -58,8 +58,11 @@
     background-color: #45a049; /* Cor ao passar o mouse */
 }
 
-.fa-cart-plus:hover{
+.fa-cart-plus:hover, .fa-trash:hover{
+    
+    color: red;
     cursor:pointer;
+    transition:all 0.4s ease;
 }
 .form-popup {
     position: absolute;
@@ -104,6 +107,16 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+.delete-button{
+    border: none;
+    font-size: 1em;
+}
+
+.description-td{
+    max-width: 450px;
+    text-align: justify;
 }
 
 .form-add-quantity button:hover {
