@@ -24,11 +24,10 @@
 
 .table-general, th, td{
     padding: 10px 20px;
-    border: 1px solid #ddd; 
 }
 
 .table-general tr:nth-child(even){
-    background-color: #ececec;
+    background-color: #fafafa;
 }
 .table-general tr:hover {
     background-color: rgba(0, 0, 0, 0.082);
@@ -107,6 +106,12 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+.delete-icon-td, .cart-icon-td{
+    background-color: white;
+    border: none;
+    padding: 10px;
 }
 
 .delete-button{

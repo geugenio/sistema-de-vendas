@@ -54,7 +54,7 @@
                             </form>
                         </div>
                     </td>
-                    <td>
+                    <td class="delete-icon-td">
                         <form action="#" th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
                             <input type="hidden" name="_method" value="delete">
                             <button type="submit" class="delete-button">
