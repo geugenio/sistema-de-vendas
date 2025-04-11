@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gabrielestudo.sistema_de_vendas.dtos.SupplierCreateDTO;
 import com.gabrielestudo.sistema_de_vendas.services.SupplierService;
+import com.gabrielestudo.sistema_de_vendas.utils.FormatterUtils;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -25,6 +26,7 @@ public class SupplierController {
     @GetMapping("/list")
     public String listSuppliers(Model model) {
         model.addAttribute("suppliers", supplierService.findAll());
+        model.addAttribute("formatter", new FormatterUtils());
         return "supplier/suppliers";
     }
 

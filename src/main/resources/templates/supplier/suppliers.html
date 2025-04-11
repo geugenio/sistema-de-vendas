@@ -32,8 +32,8 @@
                     <tbody>
                         <tr th:each="supplier : ${suppliers}">
                             <td th:text="${supplier.name}"></td>
-                            <td th:text="${supplier.cnpj}"></td>
-                            <td th:text="${supplier.phone}"></td>
+                            <td th:text="${formatter.formatCnpj(supplier.cnpj)}"></td>
+                            <td th:text="${formatter.formatPhone(supplier.phone)}"></td>
                         </tr>
                     </tbody>
                 </table>
